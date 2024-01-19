@@ -3,8 +3,9 @@ const express = require('express');
 const { default: mongoose } = require("mongoose");
 const { db } = require('./config/database');
 const todoRoutes = require('./routes/todos');
-const authRoutes = require('./routes/users');
-const messageRoutes = require('./routes/Message');
+const authRoutes = require('./routes/auth');
+const messageRoutes = require('./routes/message');
+const userRoutes = require('./routes/user');
 const auth = require('./middleware/auth');
 const cors = require('cors');
 
@@ -22,7 +23,8 @@ app.get('/', (req, res) => {
   return res.json({ message: 'hello world' })
 })
 
-app.use('/user', authRoutes)
+app.use('/auth', authRoutes)
+app.use('/users', userRoutes);
 app.use('/todo', todoRoutes)
 app.use('/message', auth.verifyUserToken, messageRoutes);
 
