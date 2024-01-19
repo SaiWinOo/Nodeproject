@@ -1,3 +1,4 @@
+require('dotenv').config();
 const express = require('express');
 const { default: mongoose } = require("mongoose");
 const { db } = require('./config/database');
@@ -5,6 +6,7 @@ const todoRoutes = require('./routes/todos');
 const authRoutes = require('./routes/users');
 const messageRoutes = require('./routes/Message');
 const auth = require('./middleware/auth');
+
 
 const app = express();
 
