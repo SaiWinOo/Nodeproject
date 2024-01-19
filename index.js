@@ -25,11 +25,11 @@ app.use('/message', auth.verifyUserToken, messageRoutes);
 
 
 
-// mongoose.connect(db, {
-// }).then(res => {
-//   console.log('Mongo connected')
-app.listen(PORT, () => {
-  console.log(`App listening on port ${PORT}`);
-});
-// })
-// .catch(error => console.log(error))
+mongoose.connect(db, {
+}).then(res => {
+  console.log('Mongo connected')
+  app.listen(PORT, () => {
+    console.log(`App listening on port ${PORT}`);
+  });
+})
+  .catch(error => console.log(error))
