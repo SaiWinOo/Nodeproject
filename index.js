@@ -6,13 +6,16 @@ const todoRoutes = require('./routes/todos');
 const authRoutes = require('./routes/users');
 const messageRoutes = require('./routes/Message');
 const auth = require('./middleware/auth');
+const cors = require('cors');
 
 
 const app = express();
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
-
+app.use(cors({
+  origin: 'http://localhost:3000',
+}))
 const PORT = process.env.PORT || 4000;
 
 app.get('/', (req, res) => {
