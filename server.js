@@ -15,14 +15,15 @@ app.use(express.urlencoded({ extended: false }));
 
 const PORT = process.env.PORT || 4000;
 
+app.get('/', (req, res) => {
+  return res.json({ message: 'hello world' })
+})
+
 app.use('/user', authRoutes)
 app.use('/todo', todoRoutes)
 app.use('/message', auth.verifyUserToken, messageRoutes);
 
-app.post('/', (req, res) => {
-  console.log(req.query);
-  res.json({ message: 'hello world' })
-})
+
 
 mongoose.connect(db, {
 }).then(res => {
